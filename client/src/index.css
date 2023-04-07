@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* add local font JungleAdventurer */
+@font-face {
+  font-family: "JungleAdventurer";
+  src: url("/fonts/JungleAdventurer.ttf");
+}
+
+.bg-img {
+  background-image: url("/ggg.png");
+  background-size: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
