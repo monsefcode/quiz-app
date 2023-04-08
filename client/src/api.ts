@@ -9,11 +9,16 @@ export const getAllUsers = async () => {
 };
 
 export const createUser = async (user: any) => {
-  const { data } = await axios.post(`${api}/users`, user);
+  const { data } = await axios.post(`${api}/users`, {
+    username: user.username,
+    phoneNumber: user.phoneNumber,
+    score: 0,
+    timing: 0,
+  });
   return data;
 };
 
-export const updateUser = async (id: number, quizResult: any) => {
+export const updateUser = async (id: any, quizResult: any) => {
   const { data } = await axios.patch(
     `${api}/users/${id}/quiz-result`,
     quizResult

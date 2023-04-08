@@ -1,23 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-image: url("/ggg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 /* add local font JungleAdventurer */
 @font-face {
   font-family: "JungleAdventurer";
   src: url("/fonts/JungleAdventurer.ttf");
-}
-
-.bg-img {
-  background-image: url("/ggg.png");
-  background-size: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
 }
