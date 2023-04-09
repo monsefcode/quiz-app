@@ -5,6 +5,8 @@ import { UserForm } from "./components/UserForm";
 import { getAllUsers, updateUser } from "./api";
 import { useQuery, useMutation } from "react-query";
 import { UserContext } from "./UserContext";
+// audio
+// import sound from "./audios/quiz.mp3";
 // =======================================    =======================================
 
 const quizQuestions = [
@@ -128,10 +130,23 @@ function App() {
     return () => clearInterval(interval);
   }, [isOn, time, currentQuestion]);
 
-  // console.log(users);
+  const playAudio = () => {
+    // const audio = new Audio(sound);
+    // audio.play();
+  };
+
+  const stopAudio = () => {
+    // const audio = new Audio(sound);
+    // audio.pause();
+  };
+
+  useEffect(() => {
+    playAudio();
+  }, []);
 
   return (
     <main className="relative z-10 flex flex-col items-center justify-center p-2 text-white md:pt-6">
+      <button onClick={stopAudio}>Stop Audio</button>
       <img src="/icon.png" className="w-20 mb-2" />
       {/* Floating images */}
       <img
@@ -189,19 +204,19 @@ function App() {
                   <>
                     <div className="flex flex-col items-center justify-center p-2 mx-auto">
                       <h1 className="text-2xl font-bold text-center text-blue-600 ">
-                        Useful Info:
+                        Useful Informations:
                       </h1>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        1 - You have 10 seconds to answer each question
+                        1 - You have to answer all the questions
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        2 - You have 1 minute to answer all the questions
+                        2 - You can't go back to previous questions
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        3 - You can't go back to previous questions
+                        3 - You can't skip questions
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        4 - You can't skip questions
+                        4 - The score is calculated based on the time
                       </p>
                     </div>
                     <button
@@ -300,10 +315,7 @@ const FloatingUserCard = ({
 }) => {
   return (
     <div className="flex gap-2 p-3 m-5 bg-white bg-opacity-50 shadow-xl rounded-xl backdrop-filter backdrop-blur-lg ">
-      <RandomAvatar
-        randomAvatar={4}
-        className="w-20 h-20 p-2 text-2xl text-blue-900 bg-blue-200 rounded-full hover:bg-blue-800 hover:shadow-xl hover:scale-105"
-      />
+      <RandomAvatar className="w-20 h-20 p-2 text-2xl text-blue-900 bg-blue-200 rounded-full hover:bg-blue-800 hover:shadow-xl hover:scale-105" />
       <div className="flex flex-col w-full p-5 mx-auto drop-shadow-lg">
         <h1 className="text-lg font-bold text-blue-500 ">
           User:{" "}

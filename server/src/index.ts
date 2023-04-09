@@ -1,12 +1,14 @@
 import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import cors from "cors";
+import morgan from "morgan";
 
 const prisma = new PrismaClient();
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
 const corsOptions = {
   origin: "http://localhost:5173",
@@ -48,9 +50,10 @@ app.get("/users", async (req: Request, res: Response) => {
         quizResult: true,
       },
     });
+    console.log(allUsers);
     res.status(200).json(allUsers);
   } catch (error) {
-    res.status(500).json({ error: "Failed to get all users" });
+    res.status(500).json({ error: "Failed to get all users", message: error });
   }
 });
 
@@ -79,6 +82,6 @@ app.patch("/users/:id/quiz-result", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(8000, () => {
-  console.log("Server running at http://localhost:8000");
+app.listen(8080, () => {
+  console.log("Server running at http://localhost:8080");
 });

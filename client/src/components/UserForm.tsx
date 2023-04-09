@@ -30,6 +30,8 @@ export const UserForm = ({
     mutationFn: (data: any) => createUser(data),
     onSuccess: (data) => {
       setUserContext(data);
+      setIsUser(true);
+      setUser(data);
     },
   });
 
@@ -37,13 +39,8 @@ export const UserForm = ({
     React.useContext(UserContext);
 
   const onSubmit = (data: any) => {
-    setIsUser(true);
-    setUser(data);
-    //
     mutate(data);
   };
-
-  console.log(isError);
 
   return (
     <form
@@ -51,7 +48,6 @@ export const UserForm = ({
       className="relative flex flex-col items-center justify-center gap-5 py-4"
     >
       <RandomAvatar
-        randomAvatar={randomAvatarNumber}
         width={90}
         height={90}
         className="absolute top-0 left-[61%] -mt-20 -ml-20 border-4 border-blue-600 drop-shadow-lg "
@@ -69,10 +65,16 @@ export const UserForm = ({
             },
           })}
         />
+        {errors && errors.username && (
+          <p className="mt-1 font-semibold text-red-500">
+            {/* @ts-ignore */}
+            {errors.username.message}
+          </p>
+        )}
         <input
           type="text"
           placeholder="Phone Number"
-          className="p-2 mt-2 font-bold text-blue-900 placeholder-white bg-blue-300 bg-opacity-50 border-2 border-blue-600 rounded-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent drop-shadow-lg"
+          className="p-2 mt-4 font-bold text-blue-900 placeholder-white bg-blue-300 bg-opacity-50 border-2 border-blue-600 rounded-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent drop-shadow-lg"
           {...register("phoneNumber", {
             required: "Phone Number is required",
             pattern: {
@@ -81,13 +83,22 @@ export const UserForm = ({
             },
           })}
         />
+        {errors && errors.phoneNumber && (
+          <p className="mt-1 font-semibold text-red-500">
+            {/* @ts-ignore */}
+            {errors.phoneNumber.message}
+          </p>
+        )}
       </div>
+
+      {isError && (
+        <p className="mt-1 font-semibold text-red-500">
+          Enter Valide Informations
+        </p>
+      )}
       <button
         type="submit"
         className="p-3 text-xl font-bold text-center duration-300 transform bg-blue-600 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 "
-        onClick={() =>
-          user.username !== "" && user.phoneNumber !== "" && setIsUser(true)
-        }
       >
         Submit
       </button>

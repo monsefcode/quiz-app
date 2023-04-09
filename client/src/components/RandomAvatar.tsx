@@ -7,14 +7,19 @@ const RandomAvatar = ({
   height,
   className,
 }: {
-  randomAvatar: number;
   className?: string;
   width?: number;
   height?: number;
 }) => {
+  const [avatar, setAvatar] = React.useState(null);
+
+  const handleSelectAvatar = (e: any) => {
+    setAvatar(e.target.value);
+  };
+
   return (
     <img
-      src={avatars[Math.floor(Math.random() * avatars.length)]}
+      src={avatars[0]}
       alt="avatar"
       className={`bg-white rounded-full bg-opacity-60 ${className} object-cover object-center 
         border-2 border-blue-600
