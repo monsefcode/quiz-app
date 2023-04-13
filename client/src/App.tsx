@@ -5,72 +5,16 @@ import { UserForm } from "./components/UserForm";
 import { getAllUsers, updateUser } from "./api";
 import { useQuery, useMutation } from "react-query";
 import { UserContext } from "./UserContext";
+// cts
+import {
+  quizQuestions,
+  firstLetterToUpperCase,
+  secondsToTime,
+} from "./constants";
 // audio
 // import sound from "./audios/quiz.mp3";
 // =======================================    =======================================
 
-const quizQuestions = [
-  {
-    question: "What is the capital of France?",
-    answers: [
-      { text: "New York", correct: false },
-      { text: "London", correct: false },
-      { text: "Paris", correct: true },
-      { text: "Dublin", correct: false },
-    ],
-  },
-  {
-    question: "Who is CEO of Tesla?",
-    answers: [
-      { text: "Jeff Bezos", correct: false },
-      { text: "Elon Musk", correct: true },
-      { text: "Bill Gates", correct: false },
-      { text: "Tony Stark", correct: false },
-    ],
-  },
-  {
-    question: "The iPhone was created by which company?",
-    answers: [
-      { text: "Apple", correct: true },
-      { text: "Intel", correct: false },
-      { text: "Amazon", correct: false },
-      { text: "Microsoft", correct: false },
-    ],
-  },
-  {
-    question: "How many Harry Potter books are there?",
-    answers: [
-      { text: "1", correct: false },
-      { text: "4", correct: false },
-      { text: "6", correct: false },
-      { text: "7", correct: true },
-    ],
-  },
-].sort(() => Math.random() - 0.5);
-
-const secondsToTime = (secs: number) => {
-  const hours = Math.floor(secs / (60 * 60));
-
-  const divisor_for_minutes = secs % (60 * 60);
-  const minutes = Math.floor(divisor_for_minutes / 60);
-
-  const divisor_for_seconds = divisor_for_minutes % 60;
-
-  const seconds = Math.ceil(divisor_for_seconds);
-
-  const obj = {
-    h: hours,
-    m: minutes,
-    s: seconds,
-  };
-  return obj;
-};
-
-const firstLetterToUpperCase = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
-// =======================================    =======================================
 function App() {
   const { data: users } = useQuery(["users"], getAllUsers);
 
@@ -110,7 +54,7 @@ function App() {
     } else {
       // end of quiz
       setShowScore(true);
-      // TODO: update user score
+      // update user score
       mutate({
         score,
         timing: time,
@@ -146,8 +90,10 @@ function App() {
 
   return (
     <main className="relative z-10 flex flex-col items-center justify-center p-2 text-white md:pt-6">
-      <button onClick={stopAudio}>Stop Audio</button>
-      <img src="/icon.png" className="w-20 mb-2" />
+      <img
+        src="/icon.png"
+        className="absolute top-0 left-0 w-20 m-10 mb-2 duration-200 opacity-50"
+      />
       {/* Floating images */}
       <img
         src="/items/img5.png"
@@ -159,11 +105,11 @@ function App() {
       />
       <img
         src="/items/img3.png"
-        className="absolute w-1/6 duration-200 opacity-50 -bottom-40 left-40 "
+        className="absolute w-1/6 duration-200 opacity-50 -bottom-60 left-64 "
       />
       <img
         src="/items/img1.png"
-        className="absolute bottom-0 w-1/5 duration-200 opacity-50 right-20 "
+        className="absolute w-1/5 duration-200 opacity-50 -bottom-60 right-20 "
       />
       {/* Floating images */}
       {isOn && (
@@ -176,7 +122,9 @@ function App() {
       <div
         className={`
           ${!isUser || showScore ? "mt-40" : ""}
-        flex flex-col p-5 mx-auto bg-blue-100 bg-opacity-50 rounded-xl drop-shadow-lg backdrop-filter backdrop-blur-lg`}
+        flex flex-col p-5 mx-auto bg-blue-100 bg-opacity-50 rounded-xl drop-shadow-lg backdrop-filter backdrop-blur-lg
+          max-w-2xl 
+        `}
       >
         {showScore ? (
           <div className="flex flex-col items-center justify-center p-2 mx-auto">
@@ -207,16 +155,16 @@ function App() {
                         Useful Informations:
                       </h1>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        1 - You have to answer all the questions
+                        1 - Vous devez répondre à toutes les questions
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        2 - You can't go back to previous questions
+                        2 - Vous ne pouvez pas revenir aux questions précédentes
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        3 - You can't skip questions
+                        3 - Vous ne pouvez pas ignorer les questions
                       </p>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
-                        4 - The score is calculated based on the time
+                        4 - Le score est calculé en fonction du temps
                       </p>
                     </div>
                     <button
@@ -276,7 +224,7 @@ const QuestionsList = ({
       <h1 className="text-2xl font-bold text-center text-blue-900">
         {quizQuestions[currentQuestion].question}
       </h1>
-      <div className="grid grid-cols-1 gap-5 mt-6 md:grid-cols-1">
+      <div className="grid grid-cols-1 gap-5 mt-6 md:grid-cols-1 ">
         {quizQuestions[currentQuestion].answers.map(
           (answer: any, i: number) => (
             <button
