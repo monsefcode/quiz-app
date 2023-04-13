@@ -129,16 +129,15 @@ function App() {
         {showScore ? (
           <div className="flex flex-col items-center justify-center p-2 mx-auto">
             <h1 className="text-2xl font-bold text-center text-blue-700 ">
-              You got{" "}
+              Vous avez{" "}
               <span className="text-3xl font-bold text-center text-blue-900">
                 {score}{" "}
               </span>
-              out of{" "}
+              hors de{" "}
               <span className="text-3xl font-bold text-center text-blue-900">
                 {quizQuestions.length}{" "}
               </span>{" "}
-              correct!, <br />
-              at{" "}
+              correct!, <br />à{" "}
               <span className="text-3xl font-bold text-center text-blue-900">
                 {secondsToTime(time).m}min/ {secondsToTime(time).s}s
               </span>
@@ -152,7 +151,7 @@ function App() {
                   <>
                     <div className="flex flex-col items-center justify-center p-2 mx-auto">
                       <h1 className="text-2xl font-bold text-center text-blue-600 ">
-                        Useful Informations:
+                        Informations utiles :
                       </h1>
                       <p className="p-2 text-xl font-bold text-center text-blue-900 ">
                         1 - Vous devez répondre à toutes les questions
@@ -171,7 +170,7 @@ function App() {
                       className="p-3 mt-2 text-xl font-bold text-center transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 hover:shadow-lg hover:scale-105 "
                       onClick={() => setIsOn(true)}
                     >
-                      Start Quiz
+                      Commencer le Quiz
                     </button>
                   </>
                 )}
