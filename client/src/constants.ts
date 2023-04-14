@@ -1,6 +1,10 @@
+// =======================================    =======================================
+
+import useConfigTranslation from "./Helper";
+
 export const quizQuestions = [
   {
-    question: "Quelle est la date de création de COPAG",
+    question: "Quelle est la date de création de COPAG ?",
     answers: [
       { text: "1995", correct: false },
       { text: "2000", correct: false },
@@ -144,9 +148,7 @@ export const quizQuestions = [
       { text: "50,000", correct: true },
     ],
   },
-].sort(() => Math.random() - 0.5);
-
-// =======================================    =======================================
+];
 
 export const secondsToTime = (secs: number) => {
   const hours = Math.floor(secs / (60 * 60));

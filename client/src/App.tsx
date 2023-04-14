@@ -3,8 +3,12 @@ import { Suspense } from "react";
 import { Router, Routes, Route, Navigate } from "react-router-dom";
 import MainSection from "./MainSection";
 import Classment from "./Classment";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { i18n } = useTranslation();
+  document.body.dir = i18n.dir();
+
   return (
     <Routes>
       <Route path="/" element={<MainSection />} />

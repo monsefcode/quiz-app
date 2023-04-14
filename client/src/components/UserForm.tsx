@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { createUser } from "../api";
 import { UserContext } from "../UserContext";
+// t
+import { useTranslation, Trans } from "react-i18next";
 // =======================================    =======================================
 
 const usernameRegex = /^[a-zA-Z0-9]+$/;
@@ -23,6 +25,8 @@ export const UserForm = ({
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { t } = useTranslation();
 
   const { mutate, isError } = useMutation({
     mutationFn: (data: any) => createUser(data),
@@ -52,7 +56,8 @@ export const UserForm = ({
       <div className="flex flex-col w-full p-5 mx-auto drop-shadow-lg">
         <input
           type="text"
-          placeholder="Nom d'utilisateur"
+          // @ts-ignore
+          placeholder={t("form.username")}
           className="p-2 mt-2 font-bold text-blue-900 placeholder-white bg-blue-300 bg-opacity-50 border-2 border-blue-600 rounded-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent drop-shadow-lg"
           {...register("username", {
             required: "Nom d'utilisateur est nécessaire",
@@ -70,7 +75,8 @@ export const UserForm = ({
         )}
         <input
           type="text"
-          placeholder="Numéro de téléphone"
+          // @ts-ignore
+          placeholder={t("form.phone")}
           className="p-2 mt-4 font-bold text-blue-900 placeholder-white bg-blue-300 bg-opacity-50 border-2 border-blue-600 rounded-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent drop-shadow-lg"
           {...register("phoneNumber", {
             required: "Le numéro de téléphone est requis",
@@ -98,7 +104,7 @@ export const UserForm = ({
         type="submit"
         className="p-3 text-xl font-bold text-center duration-300 transform bg-blue-600 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 "
       >
-        Envoyer
+        {t("form.send")}
       </button>
     </form>
   );
