@@ -43,6 +43,7 @@ function MainSection() {
   const [isOn, setIsOn] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [userClicked, setUserClicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const randomAvatarNumber = Math.floor(Math.random() * 1000);
 
   // ? handle quiz questions
@@ -189,11 +190,13 @@ function MainSection() {
                             key={i}
                             className={`flex items-center gap-5 p-3 text-xl font-bold text-center bg-white rounded-xl hover:bg-blue-800 
                             hover:shadow-xl text-blue-900 hover:text-white
+                            ${clicked && "bg-white shadow-none text-blue-900"}
                             `}
                             onClick={() => {
                               handleAnswerQuestion(answer.correct);
                               currentQuestion + 1 === quizQuestions.length &&
                                 setIsOn(false);
+                              setClicked(true);
                             }}
                           >
                             <span className="flex items-center justify-center w-10 h-10 p-2 text-2xl text-blue-900 bg-blue-200 rounded-full">
