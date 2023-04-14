@@ -175,7 +175,8 @@ function MainSection() {
                 {isOn && (
                   <>
                     <h1 className="font-bold text-center text-blue-700 text-md">
-                      Question {currentQuestion + 1} / {quizQuestions?.length}
+                      {t("quiz.question")} {currentQuestion + 1} /{" "}
+                      {quizQuestions?.length}
                     </h1>
 
                     <h1 className="text-2xl font-bold text-center text-blue-900">
@@ -186,14 +187,16 @@ function MainSection() {
                         (answer: any, i: number) => (
                           <button
                             key={i}
-                            className={`flex items-center gap-5 p-3 text-xl font-bold text-center transition-all  ease-in-out bg-white rounded-xl hover:bg-blue-800 hover:shadow-xl hover:scale-105 text-blue-900 hover:text-white duration-300`}
+                            className={`flex items-center gap-5 p-3 text-xl font-bold text-center bg-white rounded-xl hover:bg-blue-800 
+                            hover:shadow-xl text-blue-900 hover:text-white
+                            `}
                             onClick={() => {
                               handleAnswerQuestion(answer.correct);
                               currentQuestion + 1 === quizQuestions.length &&
                                 setIsOn(false);
                             }}
                           >
-                            <span className="flex items-center justify-center w-10 h-10 p-2 text-2xl text-blue-900 bg-blue-200 rounded-full hover:bg-blue-800 hover:shadow-xl hover:scale-105 ">
+                            <span className="flex items-center justify-center w-10 h-10 p-2 text-2xl text-blue-900 bg-blue-200 rounded-full">
                               {i + 1}
                             </span>{" "}
                             <span className="text-center">{answer.text}</span>
