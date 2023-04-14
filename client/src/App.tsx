@@ -127,22 +127,28 @@ function App() {
         `}
       >
         {showScore ? (
-          <div className="flex flex-col items-center justify-center p-2 mx-auto">
-            <h1 className="text-2xl font-bold text-center text-blue-700 ">
-              Vous avez{" "}
-              <span className="text-3xl font-bold text-center text-blue-900">
-                {score}{" "}
-              </span>
-              hors de{" "}
-              <span className="text-3xl font-bold text-center text-blue-900">
-                {quizQuestions.length}{" "}
-              </span>{" "}
-              correct!, <br />à{" "}
-              <span className="text-3xl font-bold text-center text-blue-900">
-                {secondsToTime(time).m}min/ {secondsToTime(time).s}s
-              </span>
-            </h1>
-          </div>
+          <>
+            <div className="flex flex-col items-center justify-center p-2 mx-auto">
+              <h1 className="text-2xl font-bold text-center text-blue-900">
+                Votre score :
+              </h1>
+              <h1 className="text-2xl font-bold text-center text-blue-700 ">
+                Note:{" "}
+                <span className="text-3xl font-bold text-center text-blue-900">
+                  {score}/{quizQuestions.length}{" "}
+                </span>{" "}
+              </h1>
+              <h1 className="text-2xl font-bold text-center text-blue-700 ">
+                Temps:{" "}
+                <span className="text-3xl font-bold text-center text-blue-900">
+                  {secondsToTime(time).m}min/ {secondsToTime(time).s}s
+                </span>
+              </h1>
+            </div>
+            {/* <h1 className="text-2xl font-bold text-center text-slate-700">
+              Vous pouvez trouver le classement ici :{" "}
+            </h1> */}
+          </>
         ) : (
           <>
             {isUser ? (
