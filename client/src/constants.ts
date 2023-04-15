@@ -81,7 +81,7 @@ export const quizQuestions = [
   },
   {
     question:
-      "Quelle est la superficie de l'atelier d’élevage et d’engraissement aux normes internationales créé en 2005 par Jayda ?",
+      "Quelle est la superficie de l'atelier d’élevage et d’engraissement aux normes internationales créé en 2015 par Jayda ?",
     answers: [
       { text: "15 Ha", correct: false },
       { text: "5 Ha", correct: false },
