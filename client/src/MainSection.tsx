@@ -48,7 +48,6 @@ function MainSection() {
 
   // ? handle quiz questions
   const quizQuestions = useConfigTranslation(quizQuestionsConfig);
-  console.log(quizQuestions);
 
   /*
    * This function is ansewer question handler

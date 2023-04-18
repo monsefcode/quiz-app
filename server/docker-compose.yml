@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "file:./prisma/dev.db"
+    command: npm run dev
+  db:
+    image: "keinos/sqlite3:latest"
+    volumes:
+      - "./prisma:/prisma"

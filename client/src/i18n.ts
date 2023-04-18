@@ -114,7 +114,7 @@ const resources = {
         },
         q9: {
           question:
-            "Quelle est la superficie de l'atelier d’élevage et d’engraissement aux normes internationales créé en 2015 par Jayda ?",
+            "Quelle est la superficie de l'atelier d’élevage et d’engraissement aux normes internationales créé en 2005 par Jayda ?",
           answers: [
             { id: "q9a1", content: "15 Ha" },
             { id: "q9a2", content: "5 Ha" },
@@ -293,7 +293,7 @@ const resources = {
         },
         q9: {
           question:
-            "ما هي مساحة الضيعة المشتركة التي تحترم المواصفات العالمية التي أنشاتها جيدة عام 2015 لتربية و تسمين العجول ?",
+            "ما هي مساحة الضيعة المشتركة التي تحترم المواصفات العالمية التي أنشاتها جيدة عام 2005 لتربية و تسمين العجول ?",
           answers: [
             { id: "q9a1", content: "15 Ha" },
             { id: "q9a2", content: "5 Ha" },
